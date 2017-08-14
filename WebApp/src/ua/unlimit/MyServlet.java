@@ -2,6 +2,7 @@ package ua.unlimit;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,8 +17,26 @@ public class MyServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String name = request.getParameter("firstName");
 		String surname = request.getParameter("secondName");
-		System.out.println(name);
-		System.out.println(surname);
+		//String job = request.getParameter("job");
+		String[] jobs = request.getParameterValues("job");
+		String gender = request.getParameter("gender");
+		if (gender == null) {
+			gender = "-";
+		}
+		String age18 = request.getParameter("age18");
+		if (age18 == null) {
+			age18 = "-";
+		}
+		
+		System.out.println("Имя: " + name);
+		System.out.println("Фамилия: " + surname);
+		//System.out.println("Профессия: " + job);
+		System.out.println("Количество ролей: " + jobs.length);
+		for (String job : jobs) {
+			System.out.print(job + ",");
+		}
+		System.out.println("Пол: " + gender);
+		System.out.println("Старше 18: " + age18);
 		
 //		response.setContentType("text/html");
 //		response.setCharacterEncoding("UTF-8");
@@ -25,7 +44,12 @@ public class MyServlet extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		
 		PrintWriter out = response.getWriter();
-		out.println("<h3>Привет от MyServlet.GET "+name+" "+surname+"</h3>");
+		out.println("<h3>Профиль сотрудника</h3>");
+		out.println("Имя: "+name+"<br>");
+		out.println("Фамилия: "+surname+"<br>");
+		out.println("Профессия: "+Arrays.deepToString(jobs)+"<br>");
+		out.println("Пол: "+gender+"<br>");
+		out.println("Старше 18: "+age18+"<br>");
 		out.close();
 	}
 
@@ -33,8 +57,26 @@ public class MyServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String name = request.getParameter("firstName");
 		String surname = request.getParameter("secondName");
-		System.out.println(name);
-		System.out.println(surname);
+		//String job = request.getParameter("job");
+		String[] jobs = request.getParameterValues("job");
+		String gender = request.getParameter("gender");
+		if (gender == null) {
+			gender = "-";
+		}
+		String age18 = request.getParameter("age18");
+		if (age18 == null) {
+			age18 = "-";
+		}
+		
+		System.out.println("Имя: " + name);
+		System.out.println("Фамилия: " + surname);
+		//System.out.println("Профессия: " + job);
+		System.out.println("Количество ролей: " + jobs.length);
+		for (String job : jobs) {
+			System.out.print(job + ",");
+		}
+		System.out.println("Пол: " + gender);
+		System.out.println("Старше 18: " + age18);
 		
 //		response.setContentType("text/html");
 //		response.setCharacterEncoding("UTF-8");
@@ -42,7 +84,12 @@ public class MyServlet extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		
 		PrintWriter out = response.getWriter();
-		out.println("<h3>Привет от MyServlet.POST "+name+" "+surname+"</h3>");
+		out.println("<h3>Профиль сотрудника</h3>");
+		out.println("Имя: "+name+"<br>");
+		out.println("Фамилия: "+surname+"<br>");
+		out.println("Профессия: "+Arrays.deepToString(jobs)+"<br>");
+		out.println("Пол: "+gender+"<br>");
+		out.println("Старше 18: "+age18+"<br>");
 		out.close();
 	}
 }
