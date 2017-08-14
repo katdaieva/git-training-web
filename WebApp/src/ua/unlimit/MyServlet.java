@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/MyServlet")
+@WebServlet(urlPatterns = "/MyServlet", description = "Моё описание сервлета", displayName = "display name")
 public class MyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Info");
+		System.out.println("MyServlet.doGet()");
 		
 //		response.setContentType("text/html");
 //		response.setCharacterEncoding("UTF-8");
@@ -22,7 +22,7 @@ public class MyServlet extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		
 		PrintWriter out = response.getWriter();
-		out.println("<h3>Hello from Катття</h3><br>Again");
+		out.println("<h3>Привет от MyServlet</h3><br>Again");
 		out.close();
 	}
 
